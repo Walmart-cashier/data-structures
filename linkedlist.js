@@ -44,18 +44,17 @@ class Linkedlist{
         return current.data
     }
     removeAtindex(data){
+        let index=data;
          if (index > 0 && index > this.size) {
              return;
          }
         
-        let index=data;
         let current,previous;
-        
+        current=this.head;
          if (index === 0) {
             this.head = current.next;
          }
         else{
-           current=this.head;
          for(let i=0;i<index;i++)
             {
                 previous=current;
@@ -85,6 +84,6 @@ class Linkedlist{
 // list.insertAtfirst(300);
 // list.insertAtfirst(400);
 // list.insertAtfirst(500);
-// list.clearList();
+// list.removeAtindex(2);
 // list.printListdata();
 
