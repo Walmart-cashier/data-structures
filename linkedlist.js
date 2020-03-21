@@ -79,12 +79,12 @@ class Linkedlist{
     }
 }
 
-let list=new Linkedlist;
-list.insertAtfirst(100);
-list.insertAtfirst(200);
-list.insertAtfirst(300);
-list.insertAtfirst(400);
-list.insertAtfirst(500);
-list.clearList();
-list.printListdata();
+// let list=new Linkedlist;
+// list.insertAtfirst(100);
+// list.insertAtfirst(200);
+// list.insertAtfirst(300);
+// list.insertAtfirst(400);
+// list.insertAtfirst(500);
+// list.clearList();
+// list.printListdata();
 
