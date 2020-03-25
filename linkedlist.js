@@ -1,89 +1,159 @@
 class Node{
-    constructor(data,next=null){
-        this.data=data;
-        this.next=next;
-    }
+  constructor(data,next=null){
+    this.data=data;
+    this.next=next;
+  }
 }
-
 class Linkedlist{
-    constructor(){
-        this.head=null;
-        this.size=0;
+  constructor(){
+    this.head=null;
+    this.size=0;
+  }
+
+  insertAtfirst(data)
+  {
+    let node=new Node(data);
+    if(!this.head)
+    {
+      this.head=node;
+      this.next=null;
     }
-    
-    insertAtfirst(data){
-        let node=new Node(data,this.head);
-        this.head=node;
-        this.size++;
+    else
+    {
+      let current=this.head;
+      this.head=node;
+      node.next=current;
     }
-    
-    insertAtlast(data){
-        let node=new Node(data);
-        if(this.size==0)
-            {
-                this.insertAtfirst(data);
-            }
-        else{
-            let current=this.head;
-        let previous;
-        while(current){
-            previous=current;
-            current=current.next;
-        }
-        previous.next=node;
-        this.size++
-        }
+    this.size++;
+  }
+
+  insertAtlast(data)
+  {
+    if(!this.head)
+    {
+      this.insertAtfirst(data);
     }
-    getAtindex(data){
-        let index=data;
-        let current=this.head;
-        for(let i=0;i<index;i++)
-            {
-                current=current.next;
-            }
-        return current.data
+    else
+    {
+      let node=new Node(data);
+      let current=this.head;
+      let prev;
+      while(current)
+      {
+        prev=current;
+        current=current.next;
+      }
+
+      prev.next=node;
+      this.size++;
     }
-    removeAtindex(data){
-        let index=data;
-         if (index > 0 && index > this.size) {
-             return;
-         }
-        
-        let current,previous;
-        current=this.head;
-         if (index === 0) {
-            this.head = current.next;
-         }
-        else{
-         for(let i=0;i<index;i++)
-            {
-                previous=current;
-                current=current.next;
-            }
-        previous.next=current.next;  
-        }
-       this.size--;
+
+  }
+
+  getAtindex(index)
+  {
+    if(index<0 || index>this.size-1)
+    {
+      console.log('invalid index');
     }
-    clearList(){
-        this.head=null;
-        this.size=0;
+    else
+    {
+      let current=this.head;
+      let x=0;
+      while(x<index)
+      {
+        current=current.next;
+        x++;
+      }
+      console.log(current.data);
     }
-    printListdata(){
-        let current= this.head;
-        while(current)
-            {
-                console.log(current.data);
-                current=current.next;
-            }
+  }
+
+  removeAtindex(index)
+  {
+    if(index<0 || index>this.size-1)
+    {
+      console.log('invalid index');
     }
+    else
+    {
+      let current=this.head;
+      let x=0;
+      let prev;
+      while(x<index)
+      {
+        prev=current;
+        current=current.next;
+        x++;
+      }
+      prev.next=current.next;
+      this.size--;
+    }
+  }
+
+  insertAtindex(data,index)
+  {
+    if(index<0 || index>this.size-1)
+    {
+      console.log('invalid index')
+    }
+    else
+    {
+      let node=new Node(data);
+      let current=this.head;
+      let x=0;
+      let prev;
+      while(x<index)
+      {
+        prev=current;
+        current=current.next;
+        x++;
+      }
+      prev.next=node;
+      node.next=current;
+      this.size++;
+    }
+
+  }
+  printListdata()
+  {
+    if(!this.head)
+    {
+      console.log('empty');
+    }
+    let current=this.head;
+    while(current)
+    {
+      console.log(current.data);
+      current=current.next;
+    }
+  }
+
+  clearList(){
+       this.head=null;
+       this.size=0;
+   }
+
+  sizes()
+  {
+    console.log(this.size);
+  }
+
+  isEmpty()
+  {
+    console.log(this.size==0);
+  }
+
 }
 
-// let list=new Linkedlist;
-// list.insertAtfirst(100);
-// list.insertAtfirst(200);
-// list.insertAtfirst(300);
-// list.insertAtfirst(400);
-// list.insertAtfirst(500);
-// list.removeAtindex(2);
-// list.printListdata();
 
+let list=new Linkedlist;
+list.insertAtfirst(100);
+list.insertAtfirst(200);
+list.insertAtfirst(300);
+list.printListdata();
+list.insertAtindex(400,3);
+list.insertAtfirst(500);
+list.removeAtindex(2);
+list.sizes();
+list.printListdata();
