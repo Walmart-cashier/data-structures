@@ -37,7 +37,7 @@ class Stack{
     {
       return 'empty stack'
     }
-    return this.storage;
+    return Object.values(this.storage);
   }
 }
 
